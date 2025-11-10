@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OnigiRich - Onigiri Rasa Nusantara</title>
+  <meta name="description" content="Nikmati OnigiRich, Onigiri premium dengan cita rasa Nusantara. Dibuat fresh setiap hari dengan bahan berkualitas. Pesan sekarang via Grab atau WhatsApp!">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Viaoda+Libre&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" integrity="sha512-yT6O0i+GCMN3AoLYrXtV2zBbP+ZwJqtNiA3BFwMQNKqFsvVvT4jP7fgEv2kM6sZ2GjbiUt1Ilb1Vql6uB3vnZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <style>
+    /* CSS Utama */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      color: #333;
+    }
+    
+    .navbar {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 15px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      transition: background-color 0.3s ease;
+    }
+    
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo span {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 2.3rem;
+      font-weight: 400;
+      color: #fcd34d;
+      transition: color 0.3s;
+      position: relative;
+      top: 4px; 
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 400;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: #22c55e;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        display: none;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+      }
+      .nav-links a {
+        color: #333;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .section {
+      text-align: center;
+      padding: 0 !important; 
+      margin: 0 !important;
+      background-color: #fbfbfb; /* Fallback color */
+      position: relative;
+    }
+    
+    .section-title, .kontak-col h2 {
+      font-family: 'Lilita One', sans-serif;
+      color: #f50909;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    
+    .section-title {
+      font-size: 3rem; 
+      margin-bottom: 20px;
+    }
+
+    .kontak-col h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .navbar.solid {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(249, 1, 1, 0.05);
+    }
+    
+    .navbar.solid .nav-links a {
+      color: #333;
+    }
+    .navbar.solid .nav-links a:hover {
+      color: #22c55e;
+    }
+    .navbar.solid .logo span {
+      color: #333;
+    }
+    
+    .navbar.solid .menu-toggle span {
+      background-color: #333;
+    }
+
+    .nav-order-btn {
+      background-color: #fcd34d;
+      color: #333 !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+    .nav-order-btn:hover {
+      transform: scale(1.05);
+    }
+
+    #home {
+      position: relative;
+      overflow: hidden;
+      background-image: url(image/Gemini_Generated_Image_y4iwdgy4iwdgy4iw.png); 
+      background-size: cover;
+      background-position: center center;
+    }
+
+    #home::before,
+    #menu::before,
+    #tentang::before,
+    #kontak::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      border-radius: 0;
+      background-image: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.65) 20%,
+        rgba(0, 0, 0, 0.65) 80%,
+        rgba(0, 0, 0, 0.85) 100%
+      );
+    }
+    
+    #home::before {
+       background-image: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.45) 20%,
+        rgba(0, 0, 0, 0.45) 80%,
+        rgba(0, 0, 0, 0.7) 100%
+      );
+    }
+
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-brand-name{font-family:'Pinyon Script',cursive;font-size:5.5rem;font-weight:400;color:#fcd34d;margin-bottom:0;line-height:1}
+    .hero-slogan{font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:300;margin-top:10px;margin-bottom:30px;letter-spacing:1px}
+    
+    /* === PERUBAHAN CSS LOGO GRAB (DIKECILKAN) === */
+    .grab-logo-link {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      z-index: 10;
+      display: block;
+      width: 50px; /* <-- Diubah dari 60px */
+      height: 50px; /* <-- Diubah dari 60px */
+      background-color: #00B14F; 
+      border-radius: 80%; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 10px; /* <-- Diubah dari 12px */
+      box-sizing: border-box; 
+    }
+    
+    .grab-logo-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    }
+
+    .grab-logo-link img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    /* === AKHIR PERUBAHAN CSS GRAB === */
+    
+    @keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
+    
+    #menu {
+      text-align: center;
+      background-image: url(image/Gemini_Generated_Image_jfxcb8jfxcb8jfxc.png);
+      background-size: cover;
+      background-position: center;
+    }
+
+    #menu .container, 
+    #menu .slider-container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    #menu .section-title, 
+    #menu .section-description {
+      color: #fff;
+    }
+
+    .section-description {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 50px auto;
+      color: #555; 
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;max-width:1200px;margin:0 auto;padding:0 20px}
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 2px solid transparent; 
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 16px;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border 0.3s; 
+      position: relative; 
+      cursor: pointer; 
+    }
+    
+    .product-card:not(.selected):hover {
+      transform: translateY(-8px) scale(1.05); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      background: rgba(255, 255, 255, 0.2);
+      z-index: 10; 
+    }
+    
+    .product-card.selected {
+      transform: scale(1.1) rotate(3deg); 
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      background: rgba(255, 255, 255, 0.3);
+      border: 2px solid #fcd34d; 
+      z-index: 20; 
+    }
+    
+    .product-card img{width:100%;border-radius:12px;object-fit:cover}
+
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 12px;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .product-price {
+      color: #fcd34d;
+      font-weight: bold;
+      margin-top: 4px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .menu-content-wrapper {
+        padding-top: 80px;
+        padding-bottom: 120px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+    
+    #tentang {
+      background-image: url('https://images.unsplash.com/photo-1512132411229-c30391241dd8?q=80&w=2070');
+      background-size: cover;
+      background-position: center;
+    }
+
+    #tentang .section-title {
+      color: #fff;
+      margin-bottom: 40px;
+      position: relative; 
+      z-index: 3;
+    }
+
+    #tentang .section-text {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      padding: 40px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+      
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      
+      border-radius: 16px; 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .tentang-content-wrapper {
+        padding-top: 120px;
+        padding-bottom: 120px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        background: transparent;
+    }
+
+    #kontak {
+      background-image: url(image/Gemini_Generated_Image_16tloo16tloo16tl\ \(1\).png);
+      background-size: cover;
+      background-position: center;
+    }
+
+    #kontak .kontak-section {
+      position: relative;
+      z-index: 2;
+      width: 100%; 
+      height: 100%; 
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; 
+      align-items: flex-start; 
+      
+      padding: 60px 40px;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box; 
+    }
+
+    .kontak-col {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+    }
+
+    .kontak-col h2,
+    .kontak-col p {
+      color: #fff;
+    }
+
+    .kontak-col p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .wa-button{display:inline-block;padding:12px 20px;background-color:#25d366;color:#fff;border-radius:12px;font-weight:600;font-size:1rem;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s}
+    .wa-button:hover{transform:translateY(-3px);box-shadow:0 6px 12px rgba(37,211,102,.3)}
+    
+    iframe{width:100%;height:300px;border:0;border-radius:12px;position:relative;z-index:2}
+    
+    .slider-container {
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      white-space: nowrap;
+      margin-top: 60px;
+      padding: 10px 0;
+    }
+
+    .slider-track{display:inline-block;animation:scroll 30s linear infinite}
+
+    .slide-item {
+      display: inline-flex;
+      font-family:'Pinyon Script', cursive;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 3rem;
+      font-size: 1.5rem;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    
+    .slide-item i{font-style:'Pinyon Script',cursive}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    
+    .nav-links a.active {
+      color: #fcd34d;
+      font-weight: 700;
+    }
+    
+    .navbar.solid .nav-links a.active {
+      color: #333;
+      font-weight: 700;
+      border-bottom: 2px solid #fcd34d;
+      padding-bottom: 2px;
+    }
+
+    /* === CSS BARU UNTUK FOOTER === */
+    #footer {
+      background-color: #222; /* Latar belakang gelap */
+      padding: 30px 20px !important; /* !important untuk override inline style fullpage.js */
+      color: #ccc;
+      text-align: center;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    .footer-content p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    .social-links {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap; /* Untuk mobile */
+      justify-content: center;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #fcd34d; /* Warna kuning brand */
+    }
+    .social-links svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    /* === AKHIR CSS FOOTER === */
+
+
+    @media (max-width: 768px) {
+      .hero-brand-name{font-size:3.5rem}
+      .hero-slogan{font-size:1.2rem}
+      
+      /* === PERUBAHAN CSS GRAB (MOBILE) === */
+      .grab-logo-link {
+        width: 45px; /* <-- Diubah dari 50px */
+        height: 45px; /* <-- Diubah dari 50px */
+        bottom: 20px;
+        right: 20px;
+        padding: 8px; /* <-- Diubah dari 10px */
+      }
+      /* === AKHIR PERUBAHAN CSS GRAB (MOBILE) === */
+
+      .section-title{font-size:2.2rem}
+      .kontak-col h2{font-size:2rem}
+      
+      #kontak .kontak-section{
+        flex-direction:column;
+        padding:40px 20px;
+        align-items: center; 
+      }
+
+      #menu{padding-top:60px}
+      .product-grid{padding:0 10px}
+      .kontak-col p{font-size:1rem}
+      .wa-button{font-size:1rem;padding:12px 28px}
+
+      .tentang-content-wrapper {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+
+      /* === CSS FOOTER (MOBILE) === */
+      #footer {
+        padding: 20px 20px !important;
+      }
+      .social-links a {
+        font-size: 0.9rem;
+        gap: 6px;
+      }
+      .social-links svg {
+        width: 18px;
+        height: 18px;
+      }
+      /* === AKHIR CSS FOOTER (MOBILE) === */
+    }
+  </style>
+</head>
+<body>
+  
+  <header class="navbar" id="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <img src="image/Logo.png" alt="Logo" />
+        <span id="logo-text">OnigiRich</span>
+      </div>
+
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" data-menuanchor="home">Home</a>
+        <a href="#menu" data-menuanchor="menu">Menu</a>
+        <a href="#tentang" data-menuanchor="tentang">Tentang</a>
+        <a href="#kontak" data-menuanchor="kontak">Kontak</a>
+        <a href="https://r.grab.com/g/6-20251110_205610_13022adf6ab5431cb9e870b2e103b49e_MEXMPS-6-C7MVEZK1SBBEJT" class="nav-order-btn" target="_blank">Order Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="fullpage">
+    
+    <div class="section" id="home">
+      <div class="hero-content" data-aos="fade-up">
+        <h1 class="hero-brand-name">OnigiRich</h1>
+        <p class="hero-slogan">
+          Onigiri Rasa Nusantara
+        </p>
+        
+        <a href="https://r.grab.com/g/6-20251110_205610_13022adf6ab5431cb9e870b2e103b49e_MEXMPS-6-C7MVEZK1SBBEJT" target="_blank" class="grab-logo-link" aria-label="Pesan di GrabFood">
+          <img src="image/grab-logo-png_seeklogo-622162.png" alt="Pesan di GrabFood">
+        </a>
+        
+      </div>
+    </div>
+    
+    <div class="section" id="menu">
+      <div class="menu-content-wrapper"> 
+        <div class="container">
+          <h2 class="section-title" data-aos="fade-down">Menu Kami</h2>
+          <p class="section-description">
+            Nikmati berbagai pilihan onigiri dengan cita rasa khas Nusantara, dibuat dengan bahan berkualitas dan resep autentik.
+          </p>
+          <div class="product-grid">
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+              <img src="image/21.png" alt="Onigiri Nasi Kuning">
+              <h3 class="product-title">Onigiri Nasi Kuning</h3>
+              <p class="product-price">Rp 12.000</p>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+              <img src="image/22.png" alt="Onigiri Nasi Uduk">
+              <h3 class="product-title">Onigiri Nasi Uduk</h3>
+              <p class="product-price">Rp 12.000</p>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+              <img src="image/23.png" alt="Onigiri Nasi Liwet">
+              <h3 class="product-title">Onigiri Nasi Liwet</h3>
+              <p class="product-price">Rp 12.000</p>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="400">
+              <img src="image/24.png" alt="Onigiri Nasi Daun Jeruk">
+              <h3 class="product-title">Onigiri Nasi Daun Jeruk</h3>
+              <p class="product-price">Rp 12.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="slider-container">
+          <div class="slider-track">
+            <div class="slide-item">🍙 <i>OnigiRich</i></div>
+            <div class="slide-item">🌍 <i>Rasa Lokal, Cita Global</i></div>
+            <div class="slide-item">🥗 <i>Onigiri Fresh Setiap Hari</i></div>
+            <div class="slide-item">✨ <i>Dibuat dengan Bahan Premium</i></div>
+            <div class="slide-item">☀️ <i>Pilihan Tepat Temani Harimu</i></div>
+            <div class="slide-item">🥢 <i>Praktis, Lezat, Mengenyangkan</i></div>
+            <div class="slide-item">🚫 <i>Tanpa Pengawet Buatan</i></div>
+            <div class="slide-item">🍱 <i>Cocok untuk Sarapan & Bekal</i></div>
+            <div class="slide-item">🍃 <i>Rasa Otentik, Kaya Nutrisi</i></div>
+            <div class="slide-item">🇮🇩 <i>Nikmati Onigiri Gaya Nusantara</i></div>
+            <div class="slide-item">🍙 <i>OnigiRich</i></div>
+            <div class="slide-item">🌍 <i>Rasa Lokal, Cita Global</i></div>
+            <div class="slide-item">🥗 <i>Onigiri Fresh Setiap Hari</i></div>
+            <div class="slide-item">✨ <i>Dibuat dengan Bahan Premium</i></div>
+            <div class="slide-item">☀️ <i>Pilihan Tepat Temani Harimu</i></div>
+            <div class="slide-item">🥢 <i>Praktis, Lezat, Mengenyangkan</i></div>
+            <div class="slide-item">🚫 <i>Tanpa Pengawet Buatan</i></div>
+            <div class="slide-item">🍱 <i>Cocok untuk Sarapan & Bekal</i></div>
+            <div class="slide-item">🍃 <i>Rasa Otentik, Kaya Nutrisi</i></div>
+            <div class="slide-item">🇮🇩 <i>Nikmati Onigiri Gaya Nusantara</i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="tentang">
+      <div class="tentang-content-wrapper">
+        <h2 class="section-title" data-aos="fade-down">Tentang Kami</h2>
+        <p class="section-text" data-aos="zoom-in-up">
+          OnigiRich lahir dari rasa cinta pada onigiri makanan khas Jepang yang kami beri sentuhan rasa lokal.
+          Kami percaya, makanan lezat tak harus rumit. Dari dapur kecil hingga ke tangan Anda, setiap OnigiRich
+          dibuat dengan bahan pilihan, higienis, dan penuh rasa. Misi kami sederhana yaitu menghadirkan makanan cepat saji
+          yang praktis, sehat, dan menggoda selera yang cocok untuk bekal, nyemil, atau teman kerja harian.
+          OnigiRich bukan sekadar camilan, tapi pengalaman rasa yang menyatukan tradisi dan inovasi dalam satu gigitan.
+        </p>
+      </div>
+    </div>
+
+    <div class="section" id="kontak">
+      <section class="kontak-section">
+        <div class="kontak-col" data-aos="fade-right">
+          <h2>Kontak Kami</h2>
+          <p>
+            Penasaran sama rasa lezat OnigiRich atau mau langsung pesan buat stok cemilan hari ini? Tenang, tim kami membersihkan chat kamu di WhatsApp! Tanya-tanya boleh, order langsung juga boleh — karena ngobrol soal makanan enak memang nggak pernah salah.
+          </p>
+          <a class="wa-button" href="https://wa.me/6287836880545?text=Halo%20saya%20mau%20pesan%20OnigiRich%20dong" target="_blank">Order? Klik disini !!!</a>
+        </div>
+        <div class="kontak-col" data-aos="fade-left">
+          <h2>Lokasi Kami</h2>
+          <p>Komplek Puri Indah Blok C3 No 26, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363</p>
+          
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3070139965266!2d106.8501384!3d-6.2102582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3a3f96c7c0f%3A0xf9a96962cc3830a1!2sWarung%20OnigiRich!5e0!3m2!1sid!2sid!4v1714902780000!5m2!1sid!2sid" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          </div>
+      </section>
+    </div>
+
+    <div class="section fp-auto-height" id="footer">
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://www.instagram.com/onigirich_id" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.77-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.26-.149-4.77-1.699-4.919-4.92-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.77 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.687.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.667.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm7.846-10.405a1.44 1.44 0 1 1 2.88 0 1.44 1.44 0 0 1-2.88 0z"/></svg>
+            <span>@onigirich_id</span>
+          </a>
+          <a href="https://wa.me/6285946058103" target="_blank" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.0-6.556 5.333-11.891 11.893-11.891 3.181.0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.0 6.557-5.335 11.89-11.891 11.89-1.996 0-3.903-.52-5.607-1.474l-6.17 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.451-4.43-9.884-9.884-9.884-5.451 0-9.885 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.096l-.537 1.952 1.996-.534z"/></svg>
+            <span>Whatsapp</span>
+          </a>
+        </div>
+        <p>© 2025 OnigiRich. All Rights Reserved.</p>
+      </div>
+    </div>
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js" integrity="sha512-UIVtWNEjzYaMV9IkNdqZBoXrAtBLH8kEwJ3tLMlNz+iEvmEN+n/8DNsTTT+tv3TSoPJJ6nQvKtcHHDBoMyxhjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+      AOS.init({ 
+        duration: 800, 
+        once: false,
+      });
+
+      // Inisialisasi fullpage
+      new fullpage('#fullpage', {
+        autoScrolling: true,
+        scrollHorizontally: true,
+        navigation: true,
+        navigationPosition: 'right',
+        // === PERUBAHAN JS (TAMBAH 'footer') ===
+        anchors: ['home', 'menu', 'tentang', 'kontak', 'footer'], 
+        navigationTooltips: ['Home', 'Menu', 'Tentang', 'Kontak', 'Info'], 
+        // === AKHIR PERUBAHAN JS ===
+        showActiveTooltip: true,
+        scrollOverflow: true, 
+        
+        menu: '#nav-links',
+
+        onLeave: function(origin, destination, direction) {
+          const navbar = document.getElementById('navbar');
+          if(destination.index > 0) {
+            navbar.classList.add('solid');
+          } else {
+            navbar.classList.remove('solid');
+          }
+          
+          const originSection = origin.item;
+          const originAosElements = originSection.querySelectorAll('[data-aos]');
+          originAosElements.forEach((el) => {
+            el.classList.remove('aos-animate');
+          });
+
+          // Reset menu selection saat pindah section
+          const menuCards = document.querySelectorAll('.product-card.selected');
+          menuCards.forEach(card => card.classList.remove('selected'));
+        },
+        
+        afterLoad: function(origin, destination, direction) {
+          const activeSection = destination.item;
+          const aosElements = activeSection.querySelectorAll('[data-aos]');
+          aosElements.forEach((el) => {
+            el.classList.add('aos-animate');
+          });
+        },
+
+        afterRender: function () {
+          fullpage_api.setAutoScrolling(true);
+          
+          const firstSection = document.querySelector('.fp-section.active');
+          const firstAosElements = firstSection.querySelectorAll('[data-aos]');
+          firstAosElements.forEach((el) => {
+            el.classList.add('aos-animate');
+          });
+        }
+      });
+
+      // --- Script untuk Animasi Menu 'Selected' ---
+      const menuCards = document.querySelectorAll('.product-card');
+
+      menuCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const isSelected = this.classList.contains('selected');
+
+          menuCards.forEach(c => c.classList.remove('selected'));
+          
+          if (!isSelected) {
+            this.classList.add('selected');
+          }
+        });
+      });
+      // --- Akhir Script Animasi Menu ---
+
+
+      // Script untuk menu toggle (sudah diperbaiki)
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+      }
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+          }
+        });
+      });
+      
+    });
+  </script>
+</body>
+</html>
