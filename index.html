@@ -83,6 +83,33 @@
     .nav-links a:hover {
       color: #22c55e;
     }
+    
+    /* ======================================= */
+    /* === CSS IKON HAMBURGER === */
+    /* ======================================= */
+    .menu-toggle {
+      display: none; /* Sembunyikan di desktop secara default */
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px; /* Lebar ikon */
+      height: 25px; /* Tinggi ikon */
+      cursor: pointer;
+      z-index: 1001;
+      position: relative;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px; /* Ketebalan garis */
+      background-color: #fff; /* Warna garis putih */
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    /* ======================================= */
+    /* === AKHIR CSS HAMBURGER === */
+    /* ======================================= */
+
 
     @media (max-width: 768px) {
       .nav-links {
@@ -104,7 +131,7 @@
         display: flex;
       }
       .menu-toggle {
-        display: flex;
+        display: flex; /* Tampilkan ikon di mobile */
       }
     }
 
@@ -114,6 +141,7 @@
       margin: 0 !important;
       background-color: #fbfbfb; /* Fallback color */
       position: relative;
+      overflow-x: hidden; /* <-- Mencegah layout 'bocor' */
     }
     
     .section-title, .kontak-col h2 {
@@ -149,7 +177,7 @@
     }
     
     .navbar.solid .menu-toggle span {
-      background-color: #333;
+      background-color: #333; /* <-- Ikon hamburger jadi hitam */
     }
 
     .nav-order-btn {
@@ -517,10 +545,21 @@
     }
     /* === AKHIR CSS FOOTER === */
 
-
+    /* ======================================= */
+    /* === BLOK CSS MOBILE YANG DIPERBAIKI === */
+    /* ======================================= */
     @media (max-width: 768px) {
       .hero-brand-name{font-size:3.5rem}
-      .hero-slogan{font-size:1.2rem}
+      
+      .hero-slogan{
+        font-size:1.2rem;
+        margin-top: 15px; /* FIX: Tambah jarak dari brand name */
+      }
+      
+      /* FIX: Tambah padding-top agar tidak tertutup navbar */
+      .hero-content {
+        padding-top: 100px; 
+      }
       
       /* === PERUBAHAN CSS GRAB (MOBILE) === */
       .grab-logo-link {
@@ -537,17 +576,26 @@
       
       #kontak .kontak-section{
         flex-direction:column;
-        padding:40px 20px;
+        /* FIX: Ubah padding-top dari 40px ke 80px */
+        padding: 80px 20px 40px 20px; 
         align-items: center; 
       }
 
-      #menu{padding-top:60px}
-      .product-grid{padding:0 10px}
+      /* FIX: Ubah padding-top dari 60px ke 80px */
+      #menu {
+        padding-top: 80px;
+      }
+      
+      .product-grid{
+        padding: 0 10px;
+        grid-template-columns: 1fr; /* <-- FIX: Paksa jadi 1 kolom di HP */
+      }
+      
       .kontak-col p{font-size:1rem}
       .wa-button{font-size:1rem;padding:12px 28px}
 
       .tentang-content-wrapper {
-        padding-top: 80px;
+        padding-top: 80px; /* Ini sudah OK (80px > 70px) */
         padding-bottom: 80px;
       }
 
@@ -587,7 +635,7 @@
         <a href="#menu" data-menuanchor="menu">Menu</a>
         <a href="#tentang" data-menuanchor="tentang">Tentang</a>
         <a href="#kontak" data-menuanchor="kontak">Kontak</a>
-        <a href="https://r.grab.com/g/6-20251110_205610_13022adf6ab5431cb9e870b2e103b49e_MEXMPS-6-C7MVEZK1SBBEJT" class="nav-order-btn" target="_blank">Order Now</a>
+        <a href="httpsS://r.grab.com/g/6-20251110_205610_13022adf6ab5431cb9e870b2e103b49e_MEXMPS-6-C7MVEZK1SBBEJT" class="nav-order-btn" target="_blank">Order Now</a>
       </nav>
     </div>
   </header>
@@ -598,10 +646,10 @@
       <div class="hero-content" data-aos="fade-up">
         <h1 class="hero-brand-name">OnigiRich</h1>
         <p class="hero-slogan">
-          Onigiri Rasa Nusantara
+          Sepotong Nusantara Dalam Genggaman
         </p>
         
-        <a href="https://r.grab.com/g/6-20251110_205610_13022adf6ab5431cb9e870b2e103b49e_MEXMPS-6-C7MVEZK1SBBEJT" target="_blank" class="grab-logo-link" aria-label="Pesan di GrabFood">
+        <a href="httpsS://r.grab.com/g/6-20251110_205610_13022adf6ab5431cb9e870b2e103b49e_MEXMPS-6-C7MVEZK1SBBEJT" target="_blank" class="grab-logo-link" aria-label="Pesan di GrabFood">
           <img src="image/grab-logo-png_seeklogo-622162.png" alt="Pesan di GrabFood">
         </a>
         
@@ -683,9 +731,9 @@
         <div class="kontak-col" data-aos="fade-right">
           <h2>Kontak Kami</h2>
           <p>
-            Penasaran sama rasa lezat OnigiRich atau mau langsung pesan buat stok cemilan hari ini? Tenang, tim kami membersihkan chat kamu di WhatsApp! Tanya-tanya boleh, order langsung juga boleh — karena ngobrol soal makanan enak memang nggak pernah salah.
+            Penasaran sama rasa lezat OnigiRich atau mau langsung pesan buat stok cemilan hari ini? Tenang, tim kami membersihkan chat kamu di WhatsApp! Tanya-tanya boleh, order langsung juga boleh karena ngobrol soal makanan enak memang nggak pernah salah.
           </p>
-          <a class="wa-button" href="https://wa.me/6287836880545?text=Halo%20saya%20mau%20pesan%20OnigiRich%20dong" target="_blank">Order? Klik disini !!!</a>
+          <a class="wa-button" href="httpsS://wa.me/6287836880545?text=Halo%20saya%20mau%20pesan%20OnigiRich%20dong" target="_blank">Order? Klik disini !!!</a>
         </div>
         <div class="kontak-col" data-aos="fade-left">
           <h2>Lokasi Kami</h2>
@@ -702,11 +750,11 @@
     <div class="section fp-auto-height" id="footer">
       <div class="footer-content">
         <div class="social-links">
-          <a href="https://www.instagram.com/onigirich_id" target="_blank" aria-label="Instagram">
+          <a href="httpsS://www.instagram.com/onigirich_id" target="_blank" aria-label="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.77-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.26-.149-4.77-1.699-4.919-4.92-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.77 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.687.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.667.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm7.846-10.405a1.44 1.44 0 1 1 2.88 0 1.44 1.44 0 0 1-2.88 0z"/></svg>
             <span>@onigirich_id</span>
           </a>
-          <a href="https://wa.me/6285946058103" target="_blank" aria-label="WhatsApp">
+          <a href="httpsS://wa.me/6285946058103" target="_blank" aria-label="WhatsApp">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.0-6.556 5.333-11.891 11.893-11.891 3.181.0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.0 6.557-5.335 11.89-11.891 11.89-1.996 0-3.903-.52-5.607-1.474l-6.17 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.451-4.43-9.884-9.884-9.884-5.451 0-9.885 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.096l-.537 1.952 1.996-.534z"/></svg>
             <span>Whatsapp</span>
           </a>
@@ -742,6 +790,14 @@
         scrollOverflow: true, 
         
         menu: '#nav-links',
+        
+        // ===============================================
+        // === FIX MOBILE: Nonaktifkan autoScrolling di HP ===
+        // ===============================================
+        responsiveWidth: 768,
+        // ===============================================
+        // === AKHIR FIX MOBILE ===
+        // ===============================================
 
         onLeave: function(origin, destination, direction) {
           const navbar = document.getElementById('navbar');
@@ -819,5 +875,4 @@
     });
   </script>
 </body>
-
 </html>
